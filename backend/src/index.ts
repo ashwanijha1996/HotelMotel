@@ -28,14 +28,15 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-// app.get("*", (req: Request, res: Response) => {
-//     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-// });
 
 //Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
+
+app.get("*", (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
 
 // Create Server
 app.listen(5500, () => {
