@@ -64,4 +64,6 @@ test("should allow user to sign out after login", async ({ page }) => {
 
   await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible();
 
-})
+});
+
+
