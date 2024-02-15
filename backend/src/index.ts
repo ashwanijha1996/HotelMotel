@@ -28,9 +28,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-app.get("*", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-});
+// app.get("*", (req: Request, res: Response) => {
+//     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+// });
 
 //Routes
 app.use("/api/auth", authRoutes);
