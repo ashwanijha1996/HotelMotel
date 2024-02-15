@@ -44,4 +44,21 @@ test("Should fill up add hotels form fields and add hotel to db successfully", a
 
     page.getByRole("button", { name: "Add Hotel" }).click();
     await expect(page.getByText("Hotel saved successfully")).toBeVisible({ timeout: 20000 });
-})
+});
+
+test("Should test view hotel page is displayed correctly", async ({ page }) => {
+    await page.goto(`${UI_URL}/my-hotels`);
+    await expect(page.getByText("Test Hotel")).toHaveCount(6);
+    await expect(page.getByText("This is test hotel")).toHaveCount(3);
+    await expect(page.getByText("test-city, India")).toHaveCount(3);
+    await expect(page.getByText("Luxury")).toHaveCount(3);
+    await expect(page.getByText("₹5000 / night")).toHaveCount(3);
+    await expect(page.getByText("5 Adults, 2 Children")).toHaveCount(3);
+    await expect(page.getByText("5 Star Rating")).toHaveCount(3);
+
+    await page.getByRole("link", { name: "View Details" }).first().click();
+
+    await expect(page.getByRole("link", { name: "My Bookings" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "My Hotels" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Sign Out" })).toBeVisible();
+});
