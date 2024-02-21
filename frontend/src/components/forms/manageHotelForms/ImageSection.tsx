@@ -6,6 +6,7 @@ const ImageSection = () => {
     const existingImageUrls = watch("imageUrls");
 
     const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>, imageUrl: string) => {
+        event.preventDefault();
         setValue("imageUrls", existingImageUrls.filter((url) => url !== imageUrl));
     }
 
